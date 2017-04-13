@@ -6,4 +6,3 @@ export default function sum (...figures) {
 
 console.log(`HELLO ${1 + 2}`)
 console.log(`HELLO ${1 + 2}`)
-console.log(`HELLO ${1 + 2}`)

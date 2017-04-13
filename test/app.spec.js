@@ -1,7 +1,7 @@
 import { expect } from 'chai'
-import sum from '../src/sum.js'
+import sum from '../src/app.js'
 
-describe('src/sum.js', _ => {
+describe('src/app.js', _ => {
   it('should add 1 + 1 to make two', () => {
     let result = sum(1, 1)
 

@@ -48,10 +48,11 @@ gulp.task('tdd', function () {
   return gulp.watch('test/*.js', ['test'])
 })
 
-gulp.task('watch', function () { // (D)
+gulp.task('watch', function () {
   gulp.start('clean')
   gulp.start('lint')
-  gulp.watch(paths.src, ['lint', 'dev'])
+  gulp.start('build')
+  gulp.watch(paths.src, ['lint', 'build'])
 })
 
 gulp.task('lint', () => {
