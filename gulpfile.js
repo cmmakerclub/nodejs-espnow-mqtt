@@ -23,7 +23,7 @@ gulp.task('clean', function () {
 })
 
 gulp.task('test', function () {
-  return gulp.src(['__tests__/*.js'])
+  return gulp.src(['tests/*.js'])
   .pipe(plugins.mocha({
     compilers: plugins.babel
   }))
