@@ -7,8 +7,13 @@ describe('src/app.js', () => {
     expect(result).to.equal(2)
   })
 
-  it('should add 1, 2 and 3 to make six', () => {
-    let result = sum(1, 2, 3)
-    expect(result).to.equal(6)
+  it('should add 1 + 2 to make three', () => {
+    let result = sum(1, 2)
+    expect(result).to.equal(3)
+  })
+
+  it('should add 1 + 4 to make five', () => {
+    let result = sum(1, 4)
+    expect(result).to.equal(5)
   })
 })

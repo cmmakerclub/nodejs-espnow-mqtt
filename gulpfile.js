@@ -45,7 +45,7 @@ gulp.task('build', function () {
 })
 
 gulp.task('tdd', function () {
-  return gulp.watch('__tests__/*.js', ['test'])
+  return gulp.watch(['src/**/*.js', 'tests/**/*.js'], ['test'])
 })
 
 gulp.task('watch', function () {
