@@ -23,7 +23,7 @@ gulp.task('clean', function () {
 })
 
 gulp.task('test', function () {
-  return gulp.src(['test/*.js'])
+  return gulp.src(['__tests__/*.js'])
   .pipe(plugins.mocha({
     compilers: plugins.babel
   }))
@@ -45,7 +45,7 @@ gulp.task('build', function () {
 })
 
 gulp.task('tdd', function () {
-  return gulp.watch('test/*.js', ['test'])
+  return gulp.watch('__tests__/*.js', ['test'])
 })
 
 gulp.task('watch', function () {
@@ -67,7 +67,7 @@ gulp.task('default', ['clean'], function () {
 })
 
 // gulp.task('tdd-single', function () {
-//   return gulp.watch('test/*.js')
+//   return gulp.watch('__tests__/*.js')
 //   .on('change', function (file) {
 //     gulp.src(file.path)
 //     .pipe(mocha({

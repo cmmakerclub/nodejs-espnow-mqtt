@@ -1,4 +1,11 @@
 {
+  "name": "cmmc-node-es6-gulp",
+  "version": "0.0.0",
+  "description": "hello",
+  "engineStrict": true,
+  "engines": {
+    "node": ">=6.9"
+  },
   "devDependencies": {
     "babel-eslint": "^7.2.2",
     "babel-plugin-transform-runtime": "^6.23.0",
@@ -14,22 +21,24 @@
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-clean": "^0.3.2",
+    "gulp-jest": "^1.0.0",
     "gulp-load-plugins": "^1.5.0",
     "gulp-mocha": "^2.2.0",
-    "gulp-sourcemaps": "^2.6.0"
+    "gulp-sourcemaps": "^2.6.0",
+    "jest-cli": "^19.0.2"
   },
   "babel": {
     "presets": [
       "es2015"
     ]
   },
-  "dependencies": {
-    "gulp-eslint": "^3.0.1"
+  "scripts": {
+    "test-only": "jest --coverage",
+    "test:watch": "jest --watch"
   },
-  "eslintConfig": {
-    "rules": {
-      "arrow-parens": 0,
-      "generator-star-spacing": 0
-    }
+  "dependencies": {
+    "babel-jest": "^19.0.0",
+    "gulp-eslint": "^3.0.1",
+    "jest-cli": "^19.0.2"
   }
 }
