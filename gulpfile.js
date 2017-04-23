@@ -1,5 +1,5 @@
 var gulp = require('gulp')
-var babel = require('babel-register')
+require('babel-register')
 
 let $ = require('gulp-load-plugins')()
 let path = require('path')
@@ -8,55 +8,46 @@ const plugins = {
   babel: $.babel,
   mocha: $.mocha,
   sourcemaps: $.sourcemaps,
-  eslint: $.eslint,
+  eslint: $.eslint
 }
 
 const paths = {
-  src: ['src/**/*.js'],
+  src: 'src/**/*.js',
   dist: 'dist',
+  tests: 'tests/*.js',
   // Must be absolute or relative to source map
-  sourceRoot: path.join(__dirname, 'dist'),
+  sourceRoot: path.join(__dirname, 'dist')
 }
 
 gulp.task('clean', function () {
   return gulp.src(['.tmp', 'dist'], {read: false}).pipe($.clean())
 })
 
-gulp.task('test', function () {
-  return gulp.src(['tests/*.js'])
-  .pipe(plugins.mocha({
-    compilers: plugins.babel
-  }))
-})
-
-gulp.task('dev', function () {
-  return gulp.src(paths.src)
-  .pipe(plugins.babel())
-  .pipe(gulp.dest(paths.dist))
-})
-
-gulp.task('build', function () {
-  gulp.start('lint')
-  return gulp.src(paths.src)
+gulp.task('build', ['lint'], function () {
+  return gulp.src([paths.src])
   .pipe(plugins.sourcemaps.init())
   .pipe(plugins.babel())
   .pipe(plugins.sourcemaps.write('.', {sourceRoot: paths.sourceRoot}))
   .pipe(gulp.dest(paths.dist))
 })
 
-gulp.task('tdd', function () {
-  return gulp.watch(['src/**/*.js', 'tests/**/*.js'], ['test'])
+gulp.task('test', function () {
+  return gulp.src([paths.tests])
+  .pipe(plugins.mocha({
+    compilers: plugins.babel
+  }))
 })
 
-gulp.task('watch', function () {
-  gulp.start('clean')
-  gulp.start('lint')
-  gulp.start('build')
-  gulp.watch(paths.src, ['lint', 'build'])
+gulp.task('tdd', ['test'], function () {
+  return gulp.watch([paths.src, paths.tests], ['test'])
+})
+
+gulp.task('watch', ['clean', 'lint', 'build'], function () {
+  gulp.watch([paths.src], ['lint', 'build'])
 })
 
 gulp.task('lint', () => {
-  return gulp.src(['src/**/*.js', '!node_modules/**'])
+  return gulp.src([paths.src, '!node_modules/**'])
   .pipe(plugins.eslint())
   .pipe(plugins.eslint.format())
   .pipe(plugins.eslint.failAfterError())
