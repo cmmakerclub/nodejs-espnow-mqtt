@@ -1,4 +1,4 @@
-# gulp es6 dev template
+# CMMC NodeJS template 
 
 don't forget to change your project name in `package.json`
 
@@ -12,3 +12,4 @@ don't forget to change your project name in `package.json`
 
     $ npm install -g forever
     $ forever dist/app.js
+
