@@ -41,10 +41,6 @@ client.on('message', function (topic, message) {
     if (message[0] === 0xff && message[1] === 0xfa) {
       var type = message.slice(2, 5);
       var name = message.slice(5, 11);
-      // let val1 = message.slice(11, 15)
-      // let val2 = message.slice(15, 19)
-      // let val3 = message.slice(19, 23)
-      // let batt = message.slice(23, 27)
       var mac = message.slice(27, 27 + 6);
 
       console.log('type = ', type);
@@ -53,9 +49,6 @@ client.on('message', function (topic, message) {
       console.log('val2 = ', message.readUInt32LE(15));
       console.log('val3 = ', message.readUInt32LE(19));
       console.log('batt = ', message.readUInt32LE(23));
-      // console.log(`val2 = `, val2.toString('hex'))
-      // console.log(`val3 = `, val3.toString('hex'))
-      // console.log(`batt = `, batt.toString('hex'))
       console.log('mac = ', mac.toString('hex'));
     } else {
       console.log('invalid header');
